@@ -78,16 +78,18 @@ export default function Support() {
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
                     <div className="border-b pb-2">
-                      <p className="font-medium">LGBTQ+ Support Line</p>
-                      <p className="font-bold">1-800-XXX-XXXX</p>
+                      <p className="font-medium">Rape Crisis Support Line</p>
+                      <p className="font-bold">English - 021 447 9762</p>
+                      <p className="font-bold">isiXhosa - 021 361 9085</p>
+                      <p className="font-bold">Afrikaans - 021 633 9229</p>
                     </div>
                     <div className="border-b pb-2">
-                      <p className="font-medium">Teen Dating Violence Helpline</p>
-                      <p className="font-bold">1-800-XXX-XXXX</p>
+                      <p className="font-medium">GBV(Gender Based violence) Helpline</p>
+                      <p className="font-bold">0800 428 428</p>
                     </div>
                     <div>
-                      <p className="font-medium">Immigrant & Multilingual Support</p>
-                      <p className="font-bold">1-800-XXX-XXXX</p>
+                      <p className="font-medium">USSD Support</p>
+                      <p className="font-bold">*120*7867#</p>
                     </div>
                   </div>
                 </CardContent>
