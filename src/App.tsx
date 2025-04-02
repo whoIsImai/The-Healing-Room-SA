@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -8,38 +7,21 @@ export default function App() {
   return (
     <div className="flex min-h-screen flex-col">
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <AlertTriangle className="h-6 w-6 text-rose-600" />
-            <span className="font-bold">GBV Awareness</span>
+      <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+        <h1 className="text-xl font-bold text-rose-600">GBV Awareness</h1>
+        <nav className="flex items-center space-x-4">
+          <Link href="/" className="text-sm text-gray-500 underline-offset-4 hover:underline">
+            Home
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            <Link href="/about" className="transition-colors hover:text-foreground/80">
-              About
-            </Link>
-            <Link href="/resources" className="transition-colors hover:text-foreground/80">
-              Resources
-            </Link>
-            <Link href="/statistics" className="transition-colors hover:text-foreground/80">
-              Statistics
-            </Link>
-            <Link href="/support" className="transition-colors hover:text-foreground/80">
-              Support
-            </Link>
-            <Link href="/get-involved" className="transition-colors hover:text-foreground/80">
-              Get Involved
-            </Link>
-          </nav>
-        </div>
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <Button variant="outline">
-            <Phone className="mr-2 h-4 w-4" />
-            Helpline
-          </Button>
-          <Button>Donate</Button>
-        </div>
+          <Link href="/about" className="text-sm text-gray-500 underline-offset-4 hover:underline">
+            About
+          </Link>
+          <Link href="/resources" className="text-sm text-gray-500 underline-offset-4 hover:underline">
+            Resources
+          </Link>
+        </nav>
       </div>
+       
     </header>
     <main className="flex-1">
       <section className="w-full py-12 md:py-24 lg:py-32 bg-rose-50">
