@@ -25,9 +25,12 @@ export default function NavBar() {
                     <Link to="/statistics" className="transition-colors hover:text-foreground/80">
                       Statistics
                     </Link>
-                    <Link to="/Support" className="transition-colors hover:text-foreground/80">
-                      Support
-                    </Link>
+
+                    <li>
+                        <Link to="/Support" className="transition-colors hover:text-foreground/80">
+                        Support
+                        </Link>
+                    </li>
                   </nav>
                 </div>
                 <div className="flex flex-1 items-center justify-end space-x-4">
