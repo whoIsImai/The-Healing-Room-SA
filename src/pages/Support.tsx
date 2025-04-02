@@ -88,7 +88,7 @@ export default function Support() {
                       <p className="font-bold">0800 428 428</p>
                     </div>
                     <div>
-                      <p className="font-medium">USSD Support</p>
+                      <p className="font-medium">USSD Support for GBV</p>
                       <p className="font-bold">*120*7867#</p>
                     </div>
                   </div>
