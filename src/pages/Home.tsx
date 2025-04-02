@@ -21,8 +21,8 @@ export default function Home() {
                 Education, awareness, and support for survivors and communities affected by gender-based violence.
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button>Learn More</Button>
-                <Button variant="outline">Find Support</Button>
+                <Button><Link to="About">Learn More</Link></Button>
+                <Button variant="outline"><Link to="/Support">Find Support</Link></Button>
               </div>
             </div>
             <div className="flex justify-center">
