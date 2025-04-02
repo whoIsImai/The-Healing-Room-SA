@@ -15,13 +15,13 @@ export default function NavBar() {
                             <span className="font-bold">GBV and Rape Awareness</span>
                         </Link>
                   </li>
-                  
-                    <Link to="/about" className="transition-colors hover:text-foreground/80">
+
+                    <Link to="/About" className="transition-colors hover:text-foreground/80">
                       About
                     </Link>
 
 
-                    <Link to="/statistics" className="transition-colors hover:text-foreground/80">
+                    <Link to="/Statistics" className="transition-colors hover:text-foreground/80">
                       Statistics
                     </Link>
 
