@@ -7,17 +7,21 @@ export default function NavBar() {
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
               <div className="container flex h-16 items-center">
                 <div className="mr-4 hidden md:flex">
-                  <Link to="/" className="mr-6 flex items-center space-x-2">
-                    <AlertTriangle className="h-6 w-6 text-rose-600" />
-                    <span className="font-bold">GBV and Rape Awareness</span>
-                  </Link>
+
+                    <li>
+                        <Link to="/" className="mr-6 flex items-center space-x-2">
+                            <AlertTriangle className="h-6 w-6 text-rose-600" />
+                            <span className="font-bold">GBV and Rape Awareness</span>
+                        </Link>
+                  </li>
+
                   <nav className="flex items-center space-x-6 text-sm font-medium">
+
                     <Link to="/about" className="transition-colors hover:text-foreground/80">
                       About
                     </Link>
-                    <Link to="/resources" className="transition-colors hover:text-foreground/80">
-                      Resources
-                    </Link>
+
+
                     <Link to="/statistics" className="transition-colors hover:text-foreground/80">
                       Statistics
                     </Link>
