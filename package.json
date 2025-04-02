@@ -1,0 +1,12 @@
+{
+  "name": "the-healing-room-sa",
+  "version": "1.0.0",
+  "description": "A website that is going to address issues such as GBV(Gender Based Violance) and Rape in South Africa. This site is also going to allow victims to tell their stories and get help",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
