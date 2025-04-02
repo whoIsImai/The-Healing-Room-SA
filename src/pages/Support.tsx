@@ -10,7 +10,7 @@ import NavBar from "./NavBar"
 
 export default function Support() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col pl-[1em]">
     <NavBar />
     <div className="container py-10">
       <div className="space-y-8">
@@ -26,16 +26,15 @@ export default function Support() {
           <div>
             <h3 className="font-bold text-rose-700">Emergency Help</h3>
             <p className="text-rose-700">
-              If you are in immediate danger, please call emergency services at <strong>911</strong> or your local
+              If you are in immediate danger, please call emergency services at <strong>10111</strong> or your local
               emergency number.
             </p>
           </div>
         </div>
 
         <Tabs defaultValue="helplines" className="w-full">
-          <TabsList className="grid w-full max-w-md grid-cols-3">
+          <TabsList className="grid w-full max-w-md grid-cols-2">
             <TabsTrigger value="helplines">Helplines</TabsTrigger>
-            <TabsTrigger value="local">Local Resources</TabsTrigger>
             <TabsTrigger value="safety">Safety Planning</TabsTrigger>
           </TabsList>
 
@@ -49,26 +48,23 @@ export default function Support() {
                   </div>
                   <CardDescription>24/7 confidential support</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-3">
                   <div className="flex items-center justify-between border-b pb-2">
-                    <span className="font-medium">Phone:</span>
-                    <span className="font-bold">1-800-XXX-XXXX</span>
+                    <span className="font-medium">Phone crime Stop:</span>
+                    <span className="font-bold">08600 10111</span>
                   </div>
                   <div className="flex items-center justify-between border-b pb-2">
-                    <span className="font-medium">Text:</span>
-                    <span className="font-bold">SUPPORT to 88888</span>
+                    <span className="font-medium">MySAPS USSD Code:</span>
+                    <span className="font-bold">*134*10111#</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="font-medium">Chat:</span>
-                    <span className="font-bold">Available online</span>
+                    <span className="font-bold">MySAPS Mobile App</span>
                   </div>
                   <p className="text-sm text-gray-500 pt-2">
                     Trained advocates available 24/7 to provide crisis intervention, safety planning, and referrals.
                   </p>
                 </CardContent>
-                <CardFooter>
-                  <Button className="w-full">Call Now</Button>
-                </CardFooter>
               </Card>
 
               <Card>

@@ -1,13 +1,12 @@
 import {Link } from 'react-router-dom'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { BookOpen, ExternalLink, HelpCircle, Info, Phone } from "lucide-react"
+import { BookOpen, HelpCircle, Info } from "lucide-react"
 import NavBar from './NavBar'
 
 export default function Home() {
     return (
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen flex-col pl-[1em]">
     <main className="flex-1">
     <NavBar />
       <section className="w-full py-12 md:py-24 lg:py-32 bg-rose-50">
@@ -17,13 +16,13 @@ export default function Home() {
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="space-y-4">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Raising Awareness About Gender-Based Violence
+                Raising Awareness About Gender-Based Violence & Rape
               </h1>
               <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Education, awareness, and support for survivors and communities affected by gender-based violence.
+                Education, awareness, and support for survivors and communities affected by Rape & gender-based violence.
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button><Link to="About">Learn More</Link></Button>
+                <Button><Link to="/About">Learn More</Link></Button>
                 <Button variant="outline"><Link to="/Support">Find Support</Link></Button>
               </div>
             </div>
@@ -49,9 +48,9 @@ export default function Home() {
               <div className="inline-block rounded-lg bg-rose-100 px-3 py-1 text-sm text-rose-700">
                 Key Information
               </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Understanding Gender-Based Violence</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Understanding Rape & Gender-Based Violence</h2>
               <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Gender-based violence affects millions. Education and awareness are crucial for prevention.
+                Rape and Gender-based violence affects millions. Education and awareness are crucial for prevention.
               </p>
             </div>
           </div>
@@ -67,13 +66,13 @@ export default function Home() {
                 </div>
                 <p className="mt-4 text-gray-500">
                   Educational resources to help understand the causes, effects, and prevention of gender-based
-                  violence.
+                  violence and rape cases.
                 </p>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full">
-                  Learn More
-                </Button>
+              <a href="https://www.education.gov.za/Portals/0/Documents/Publications/STOP%20RAPE%20booklet.pdf" target='_blank'>
+                <Button variant="outline" className="w-full">Learn More</Button>
+                </a>
               </CardFooter>
             </Card>
             <Card>
@@ -90,112 +89,13 @@ export default function Home() {
                 </p>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full">
-                  Find Support
-                </Button>
+                
+                 <Link to="/Support">
+                    <Button variant="outline" className="w-full">Find Support</Button>
+                </Link>
+                
               </CardFooter>
             </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Take Action</CardTitle>
-                <CardDescription>Ways to get involved</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-rose-100 text-rose-700">
-                  <ExternalLink className="h-6 w-6" />
-                </div>
-                <p className="mt-4 text-gray-500">
-                  Ways to get involved in prevention efforts, advocacy, and supporting survivors in your community.
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button variant="outline" className="w-full">
-                  Get Involved
-                </Button>
-              </CardFooter>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Resources & Support</h2>
-              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Access educational materials, support services, and ways to get involved.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto max-w-3xl py-12">
-            <Tabs defaultValue="education" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="education">Education</TabsTrigger>
-                <TabsTrigger value="support">Support</TabsTrigger>
-                <TabsTrigger value="action">Take Action</TabsTrigger>
-              </TabsList>
-              <TabsContent value="education" className="p-4 border rounded-lg mt-4">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold">Educational Resources</h3>
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <BookOpen className="h-4 w-4 text-rose-600" />
-                      <span>Understanding the root causes of gender-based violence</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <BookOpen className="h-4 w-4 text-rose-600" />
-                      <span>Recognizing warning signs</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <BookOpen className="h-4 w-4 text-rose-600" />
-                      <span>Prevention strategies and education</span>
-                    </li>
-                  </ul>
-                  <Button className="mt-4">View All Resources</Button>
-                </div>
-              </TabsContent>
-              <TabsContent value="support" className="p-4 border rounded-lg mt-4">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold">Support Services</h3>
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <Phone className="h-4 w-4 text-rose-600" />
-                      <span>24/7 Crisis Helpline: 1-800-XXX-XXXX</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <HelpCircle className="h-4 w-4 text-rose-600" />
-                      <span>Local support groups and counseling</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Info className="h-4 w-4 text-rose-600" />
-                      <span>Legal resources and advocacy</span>
-                    </li>
-                  </ul>
-                  <Button className="mt-4">Find Support Near You</Button>
-                </div>
-              </TabsContent>
-              <TabsContent value="action" className="p-4 border rounded-lg mt-4">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold">Ways to Get Involved</h3>
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <ExternalLink className="h-4 w-4 text-rose-600" />
-                      <span>Volunteer opportunities</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <ExternalLink className="h-4 w-4 text-rose-600" />
-                      <span>Advocacy and policy initiatives</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <ExternalLink className="h-4 w-4 text-rose-600" />
-                      <span>Community education programs</span>
-                    </li>
-                  </ul>
-                  <Button className="mt-4">Get Involved</Button>
-                </div>
-              </TabsContent>
-            </Tabs>
           </div>
         </div>
       </section>
@@ -206,13 +106,13 @@ export default function Home() {
           © 2023 GBV Awareness. All rights reserved.
         </p>
         <div className="flex items-center gap-4">
-          <Link to="/privacy" className="text-sm text-gray-500 underline-offset-4 hover:underline">
+          <Link to="/Privacy" className="text-sm text-gray-500 underline-offset-4 hover:underline">
             Privacy Policy
           </Link>
-          <Link to="/terms" className="text-sm text-gray-500 underline-offset-4 hover:underline">
+          <Link to="/Terms" className="text-sm text-gray-500 underline-offset-4 hover:underline">
             Terms of Service
           </Link>
-          <Link to="/contact" className="text-sm text-gray-500 underline-offset-4 hover:underline">
+          <Link to="/Contact" className="text-sm text-gray-500 underline-offset-4 hover:underline">
             Contact
           </Link>
         </div>
