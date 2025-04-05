@@ -117,11 +117,6 @@ export default function Support() {
             </Card>
           </TabsContent>
 
-
-
-
-////////////////////////////////////////// Continue Here ///////////////////////////////////////////////////////////////////
-
           <TabsContent value="safety" className="mt-6 space-y-6">
             <Card>
               <CardHeader>
