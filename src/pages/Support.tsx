@@ -137,8 +137,8 @@ export default function Support() {
                       <ul className="list-disc pl-5 space-y-1 text-sm">
                         <li>Identifying safe areas in your home</li>
                         <li>Planning escape routes</li>
-                        <li>Emergency contacts and code words</li>
-                        <li>Essential items to keep ready</li>
+                        <li>Have emergency contacts</li>
+                        <li>If you feel uneasy about someone, don't let them isolate you</li>
                       </ul>
                     </div>
 
