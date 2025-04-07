@@ -1,46 +1,78 @@
 import {Link } from "react-router-dom"
 import { AlertTriangle, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useState } from "react"
 
 export default function NavBar() {
+
+  const [menuOpen, setMenuOpen] = useState(false)
+
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-              <div className="container flex h-18 items-center">
+              <div className="container flex h-auto items-center">
                 <div className="mr-4 flex md:flex">
-                <ul>
-                  <nav className="flex items-center space-x-6 text-sm font-medium">
-                  <li>
+                
+                  <nav className="flex items-center text-sm ">
                         <Link to="/" className="mr-6 flex items-center space-x-2">
                             <AlertTriangle className="h-6 w-6 text-rose-600" />
-                            <span className="font-bold">GBV and Rape Awareness</span>
+                            <span className="font-bold whitespace-nowrap text-lg">GBV and Rape Awareness</span>
                         </Link>
-                  </li>
+                  </nav>
+              
+                </div>
+                  <div className="w-full">
+      {/* Toggle Button - visible only on mobile */}
+      <div className="flex justify-end md:hidden p-4">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {/* Hamburger Icon */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </Button>
+      </div>
 
-                    <Link to="/About" className="transition-colors hover:text-foreground/80">
-                      About
+      {/* Mobile Menu (shows only when open) */}
+      {menuOpen && (
+        <div className="flex flex-col items-center space-y-4 p-4 md:hidden">
+                    <Link to="/Support" className="transition-colors hover:text-foreground/80">
+                        Support
                     </Link>
+                   
+                  <Button variant="outline" className="w-full p-4 rounded">
+                  <Phone className="mr-2 h-4 w-4" />
+                        Helpline
+                 </Button>
+               <Button className="w-full p-4 rounded">Donate</Button>
+        </div>
+      )}
 
-
-                    <Link to="/Statistics" className="transition-colors hover:text-foreground/80">
-                      Statistics
-                    </Link>
-
-                    <li>
+      {/* Desktop Menu (always visible) */}
+      <div className="hidden md:flex  md:flex-row md:items-center md:justify-end space-y-4 md:space-y-0 md:space-x-4 p-4">                    
                         <Link to="/Support" className="transition-colors hover:text-foreground/80">
                         Support
                         </Link>
-                    </li>
-                  </nav>
-                </ul>
-                </div>
-                <div className="flex flex-col md:flex-row flex-1 items-center md:justify-end space-y-4 md:space-y-0 md:space-x-4">
-                  <Button variant="outline" className="w-full md:w-auto p-4 rounded">
-                    <Phone className="mr-2 h-4 w-4" />
-                    Helpline
-                  </Button>
-                  <Button className="w-full md:w-auto p-4 rounded">Donate</Button>
-                </div>
-              </div>
+                    
+        <Button variant="outline" className="w-full md:w-auto p-4 rounded">
+          <Phone className="mr-2 h-4 w-4" />
+          Helpline
+        </Button>
+        <Button className="w-full md:w-auto p-4 rounded">Donate</Button>
+      </div>
+    </div>
+
+               </div>
             </header>
     )
 }
