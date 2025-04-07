@@ -2,6 +2,7 @@ import {Link } from "react-router-dom"
 import { AlertTriangle, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
+import {login} from "../logic/login"
 
 export default function NavBar() {
 
@@ -54,7 +55,7 @@ export default function NavBar() {
                   <Phone className="mr-2 h-4 w-4" />
                         Helpline
                  </Button>
-               <Button className="w-full p-4 rounded">Donate</Button>
+               <Button className="w-full p-4 rounded" onClick={login}>Donate</Button>
         </div>
       )}
 
@@ -68,7 +69,7 @@ export default function NavBar() {
           <Phone className="mr-2 h-4 w-4" />
           Helpline
         </Button>
-        <Button className="w-full md:w-auto p-4 rounded">Donate</Button>
+        <Button className="w-full md:w-auto p-4 rounded" onClick={login}>Donate</Button>
       </div>
     </div>
 
