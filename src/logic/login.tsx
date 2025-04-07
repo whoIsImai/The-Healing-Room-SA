@@ -10,11 +10,7 @@ export const login = ()=> {
         if (user) {
             console.log("User is logged in", user)
         } else {
-            console.log("User is logged out")
-        }
-    })
-
-    signInWithPopup(auth, new GoogleAuthProvider())
+            signInWithPopup(auth, new GoogleAuthProvider())
     .then((result) => {
        GoogleAuthProvider.credentialFromResult(result)
         const user = result.user
@@ -27,5 +23,9 @@ export const login = ()=> {
         const credential = GoogleAuthProvider.credentialFromError(error)
         console.error("Error signing in", errorCode, errorMessage, email, credential)
     }
-    )   
+    ) 
+        }
+    })
+
+      
 } 
