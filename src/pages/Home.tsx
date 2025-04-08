@@ -22,7 +22,7 @@ export default function Home() {
                 Education, awareness, and support for survivors and communities affected by Rape & gender-based violence.
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button><Link to="/About">Learn More</Link></Button>
+                <Button><a href="https://www.education.gov.za/Portals/0/Documents/Publications/STOP%20RAPE%20booklet.pdf" target='_blank'>Learn More</a></Button>
                 <Button variant="outline"><Link to="/Support">Find Support</Link></Button>
               </div>
             </div>
