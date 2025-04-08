@@ -1,7 +1,7 @@
 import {Link } from "react-router-dom"
 import { AlertTriangle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { useState} from "react"
 import {login} from "../../logic/login"
 import {FcGoogle} from 'react-icons/fc'
 import {logout} from "../../logic/logout"
@@ -11,13 +11,9 @@ import { getAuth } from "firebase/auth";
 export default function NavBar() {
     const auth = getAuth(app)
     const user = auth.currentUser
-  
-    const [userPhoto, setUserPhoto] = useState(user?.photoURL || '')
-    const [userName, setUserName] = useState(user?.displayName || '')
 
-    setUserPhoto(user?.photoURL || '')
-    setUserName(user?.displayName || '')
-  const [menuOpen, setMenuOpen] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false)
+
 
   if(!user) {
     return (
@@ -136,13 +132,9 @@ onClick={() => setMenuOpen(!menuOpen)}
           <Link to="/Stories" className="transition-colors hover:text-foreground/80">
               Stories
               </Link>
-              <button  className="transition-colors hover:text-foreground/80" onClick={logout}>
+              <button  className="transition-colors hover:text-foreground/80 bg-amber-300 p-3 rounded-3xl" onClick={logout}>
               Logout
               </button>
-       <Button className="w-auto p-4 rounded flex items-center gap-2" onClick={login}>
-          <img src={userPhoto} />
-          {userName}
-        </Button>
 </div>
 )}
 
@@ -154,13 +146,9 @@ onClick={() => setMenuOpen(!menuOpen)}
               <Link to="/Stories" className="transition-colors hover:text-foreground/80">
               Stories
               </Link>
-              <button  className="transition-colors hover:text-foreground/80" onClick={logout}>
+              <button  className="transition-colors hover:text-foreground/80 bg-amber-300 p-3 rounded-3xl" onClick={logout}>
               Logout
               </button>
-<Button className="w-auto p-2 rounded flex items-center gap-2" onClick={login}>
-<img src={userPhoto} />
-{userName}
-</Button>
 </div>
 </div>
 
