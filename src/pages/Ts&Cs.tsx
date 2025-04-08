@@ -77,7 +77,7 @@ const TermsAndConditions = () => {
       <section>
         <h2 className="text-xl font-semibold mb-2">9. Contact Us</h2>
         <p>
-          If you have any questions or concerns about these Terms and Conditions, or if you’d like to request the removal of a story, please contact us at: [Insert contact email or form link].
+          If you have any questions or concerns about these Terms and Conditions, or if you’d like to request the removal of a story, please contact us at: thehealingroomsa@gmail.
         </p>
       </section>
     </div>

@@ -106,14 +106,8 @@ export default function Home() {
           © 2023 GBV Awareness. All rights reserved.
         </p>
         <div className="flex items-center gap-4">
-          <Link to="/Privacy" className="text-sm text-gray-500 underline-offset-4 hover:underline">
-            Privacy Policy
-          </Link>
           <Link to="/Terms" className="text-sm text-gray-500 underline-offset-4 hover:underline">
             Terms of Service
-          </Link>
-          <Link to="/Contact" className="text-sm text-gray-500 underline-offset-4 hover:underline">
-            Contact
           </Link>
         </div>
       </div>
