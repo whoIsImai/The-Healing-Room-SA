@@ -50,7 +50,7 @@ export default function NavBar() {
                     <Link to="/Support" className="transition-colors hover:text-foreground/80">
                         Support
                     </Link>
-                    <Link to="/Story" className="transition-colors hover:text-foreground/80">
+                    <Link to="/Stories" className="transition-colors hover:text-foreground/80">
                         Stories
                         </Link>
                    
