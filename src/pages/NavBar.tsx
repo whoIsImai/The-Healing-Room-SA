@@ -50,12 +50,17 @@ export default function NavBar() {
                     <Link to="/Support" className="transition-colors hover:text-foreground/80">
                         Support
                     </Link>
+                    <Link to="/Story" className="transition-colors hover:text-foreground/80">
+                        Stories
+                        </Link>
                    
                   <Button variant="outline" className="w-full p-4 rounded">
                   <Phone className="mr-2 h-4 w-4" />
                         Helpline
                  </Button>
-               <Button className="w-full p-4 rounded" onClick={login}>Donate</Button>
+               <Button className="w-full p-4 rounded" onClick={login}>
+                Donate
+                </Button>
         </div>
       )}
 
@@ -63,6 +68,9 @@ export default function NavBar() {
       <div className="hidden md:flex  md:flex-row md:items-center md:justify-end space-y-4 md:space-y-0 md:space-x-4 p-4">                    
                         <Link to="/Support" className="transition-colors hover:text-foreground/80">
                         Support
+                        </Link>
+                        <Link to="/Stories" className="transition-colors hover:text-foreground/80">
+                        Stories
                         </Link>
                     
         <Button variant="outline" className="w-full md:w-auto p-4 rounded">

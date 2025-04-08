@@ -8,7 +8,7 @@ const auth = getAuth(app)
 export const login = ()=> {
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            console.log("User is logged in", user)
+           return user
         } else {
             signInWithPopup(auth, new GoogleAuthProvider())
     .then((result) => {
