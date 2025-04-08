@@ -170,8 +170,8 @@ export default function Support() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Online Safety Tips</CardTitle>
-                <CardDescription>Protecting your digital privacy and security</CardDescription>
+                <CardTitle>Safety Tips</CardTitle>
+                <CardDescription>These tips are about empowerment, not responsibility. The responsibility always lies with the perpetrator—not the survivor.</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -186,9 +186,9 @@ export default function Support() {
                         1
                       </div>
                       <div>
-                        <p className="font-medium">Use a secure browser</p>
+                        <p className="font-medium">Limit Location Sharing</p>
                         <p className="text-sm text-gray-500">
-                          Consider using private browsing mode or browsers focused on privacy
+                         You never know who is wathching, Turn off location services when not needed (on apps like Facebook, Whatsapp, Google Maps).
                         </p>
                       </div>
                     </div>
@@ -198,9 +198,9 @@ export default function Support() {
                         2
                       </div>
                       <div>
-                        <p className="font-medium">Check your device settings</p>
+                        <p className="font-medium">Handle Abusive Messages Safely</p>
                         <p className="text-sm text-gray-500">
-                          Review which apps have access to your location, camera, and microphone
+                        Do not respond to threatening or harassing messages.Do not respond to threatening or harassing messages.
                         </p>
                       </div>
                     </div>
@@ -210,9 +210,9 @@ export default function Support() {
                         3
                       </div>
                       <div>
-                        <p className="font-medium">Use strong, unique passwords</p>
+                        <p className="font-medium">Carry Personal Safety Tools</p>
                         <p className="text-sm text-gray-500">
-                          Change passwords for important accounts, especially if they might be compromised
+                        Whistle, pepper spray, or personal alarm,  some safety apps like Namola or Bull Horns Panic Button can also send instant alerts.
                         </p>
                       </div>
                     </div>
@@ -222,9 +222,9 @@ export default function Support() {
                         4
                       </div>
                       <div>
-                        <p className="font-medium">Be cautious with social media</p>
+                        <p className="font-medium">Report to SAPS</p>
                         <p className="text-sm text-gray-500">
-                          Review privacy settings and be mindful of what you share publicly
+                        You can report rape or abuse at any police station.
                         </p>
                       </div>
                     </div>
