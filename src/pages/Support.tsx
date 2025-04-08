@@ -135,8 +135,8 @@ export default function Support() {
                     <div className="border rounded-lg p-4">
                       <h3 className="font-bold mb-2">Personal Safety</h3>
                       <ul className="list-disc pl-5 space-y-1 text-sm">
-                        <li>Identifying safe areas in your home</li>
-                        <li>Planning escape routes</li>
+                        <li>Never feel bad about being “rude” to protect yourself.</li>
+                        <li>Have a few go-to people you can reach out to quickly.</li>
                         <li>Have emergency contacts</li>
                         <li>If you feel uneasy about someone, don't let them isolate you</li>
                       </ul>
@@ -145,20 +145,19 @@ export default function Support() {
                     <div className="border rounded-lg p-4">
                       <h3 className="font-bold mb-2">Digital Safety</h3>
                       <ul className="list-disc pl-5 space-y-1 text-sm">
-                        <li>Securing your devices and accounts</li>
-                        <li>Understanding digital stalking</li>
-                        <li>Safe communication methods</li>
-                        <li>Privacy settings and location services</li>
+                        <li>Do not respond to threatening or harassing messages.</li>
+                        <li>Understand digital stalking</li>
+                        <li>Take screenshots as evidence before blocking or reporting.</li>
+                        <li>Avoid posting your real-time location on social media.</li>
                       </ul>
                     </div>
 
-                    <div className="border rounded-lg p-4">
+                    <div className="border rounded-lg p-3">
                       <h3 className="font-bold mb-2">Legal Protections</h3>
                       <ul className="list-disc pl-5 space-y-1 text-sm">
-                        <li>Understanding protective orders</li>
-                        <li>Documentation and evidence</li>
+                        <li>Understand protection orders</li>
+                        <li>Document and keep evidence</li>
                         <li>Working with law enforcement</li>
-                        <li>Child custody considerations</li>
                       </ul>
                     </div>
                   </div>
@@ -237,9 +236,7 @@ export default function Support() {
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <p className="text-sm font-medium">Important Note:</p>
                     <p className="text-sm text-gray-500">
-                      If you believe your devices are being monitored, be aware that changing settings or passwords
-                      could alert the person monitoring you. Consider using a safer device (like a library computer) to
-                      research resources or seek help.
+                    🛑 Important: You Are Never to Blame
                     </p>
                   </div>
                 </div>
