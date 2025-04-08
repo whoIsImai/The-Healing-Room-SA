@@ -3,6 +3,7 @@ import { AlertTriangle, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import {login} from "../logic/login"
+import {FcGoogle} from 'react-icons/fc'
 
 export default function NavBar() {
 
@@ -58,9 +59,10 @@ export default function NavBar() {
                   <Phone className="mr-2 h-4 w-4" />
                         Helpline
                  </Button>
-               <Button className="w-full p-4 rounded" onClick={login}>
-                Donate
-                </Button>
+                 <Button className="w-full p-4 rounded flex items-center gap-2" onClick={login}>
+                    <FcGoogle size={20} />
+                   Sign In With Google
+                  </Button>
         </div>
       )}
 
@@ -77,7 +79,10 @@ export default function NavBar() {
           <Phone className="mr-2 h-4 w-4" />
           Helpline
         </Button>
-        <Button className="w-full md:w-auto p-4 rounded" onClick={login}>Donate</Button>
+        <Button className="w-full p-4 rounded flex items-center gap-2" onClick={login}>
+                    <FcGoogle size={20} />
+                   Sign In With Google
+                  </Button>
       </div>
     </div>
 
