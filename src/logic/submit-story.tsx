@@ -12,9 +12,8 @@ export type StorySubmission = {
     createdAt: Date
   }
   const auth = getAuth(app)
- 
   
-  export function submitStory(formData: FormData) {
+  export async function submitStory(formData: FormData) {
     // Add validation here
     const title = formData.get("title") as string
     const content = formData.get("content") as string
@@ -57,13 +56,13 @@ export type StorySubmission = {
         const userRef = doc(db, 'stories', user.email)
   
         try {
-           updateDoc(userRef, {
+           await updateDoc(userRef, {
             stories: arrayUnion(newStory),
             name: user.displayName,
           });
         } catch (error) {
           if ((error as FirebaseError).code === 'not-found') {
-             setDoc(
+            await  setDoc(
               userRef,
               {
                 stories: [newStory],

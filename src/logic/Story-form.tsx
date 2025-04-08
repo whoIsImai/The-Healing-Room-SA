@@ -28,9 +28,9 @@ export default function StoryForm() {
 
     try {
       const response = submitStory(formData)
-      setFormResponse(response)
+      setFormResponse(await response)
 
-      if (response.success) {
+      if ((await response).success) {
         // Reset form on success
         const form = document.getElementById("story-form") as HTMLFormElement
         form.reset()
