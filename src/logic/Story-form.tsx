@@ -8,8 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { AlertCircle, Send, Shield } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { getAuth } from "firebase/auth"
-import { app } from "@/utils/firebase"
+
 
 
 export default function StoryForm() {
@@ -23,14 +22,7 @@ export default function StoryForm() {
   const [isAnonymous, setIsAnonymous] = useState(false)
 
   async function handleSubmit(formData: FormData) {
-    const user = getAuth(app).currentUser
-    if (!user) {
-      setFormResponse({
-        success: false,
-        message: "You must be logged in to submit a story.",
-      })
-      return
-    }
+  
     setIsSubmitting(true)
     setFormResponse(null)
 

@@ -1,8 +1,7 @@
 import { doc, setDoc, updateDoc, arrayUnion, getFirestore, arrayRemove } from 'firebase/firestore'
 import {app} from '../utils/firebase'
-import { onAuthStateChanged, getAuth } from 'firebase/auth'
+import { getAuth } from 'firebase/auth'
 import { FirebaseError } from 'firebase/app';
-
 
 export type StorySubmission = {
     id: string
@@ -45,20 +44,26 @@ export type StorySubmission = {
       createdAt: new Date()
     }
   
-    //this should save to a database
-    onAuthStateChanged(auth, async (user) => {
+    const user = auth.currentUser
+
+    if (!user) {
+      return { success: false, message: "Please sign in to share your story" }
+    }
+    if (!user.email) {
+      return { success: false, message: "Email not found" }
+    }
       if (user?.email) {
         const db = getFirestore(app);
-        const userRef = doc(db, 'stories', user.email);
+        const userRef = doc(db, 'stories', user.email)
   
         try {
-          await updateDoc(userRef, {
+           updateDoc(userRef, {
             stories: arrayUnion(newStory),
             name: user.displayName,
           });
         } catch (error) {
           if ((error as FirebaseError).code === 'not-found') {
-            await setDoc(
+             setDoc(
               userRef,
               {
                 stories: [newStory],
@@ -67,18 +72,17 @@ export type StorySubmission = {
               { merge: true }
             );
           } else {
-            console.error('Error writing document:', error);
+            console.error('Error writing document:', error)
           }
         }
       } else {
-        // Show message in your UI instead (not inside this function)
-        alert('Not logged in. Please sign in to submit a story.');
+        
+        return{
+          success: false,
+          message: "User not authenticated",
+        }
       }
-    });
 
-  
-    // Revalidate the stories page to show the updated list
-    //revalidatePath("/stories")
   
     return {
       success: true,
