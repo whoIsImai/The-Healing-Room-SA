@@ -234,15 +234,15 @@ export default function Support() {
                   </div>
 
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm font-medium">Important Note:</p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm font-medium text-center">Important Note:</p>
+                    <p className="text-sm text-gray-500 text-center">
                     🛑 Important: You Are Never to Blame
                     </p>
                   </div>
                 </div>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full \">
                   Access Detailed Digital Safety Guide
                 </Button>
               </CardFooter>
