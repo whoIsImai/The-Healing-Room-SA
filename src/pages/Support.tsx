@@ -165,9 +165,6 @@ export default function Support() {
               </CardContent>
               <CardFooter className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
                 <Button className="w-full sm:w-auto">Download Safety Plan Template</Button>
-                <Button variant="outline" className="w-full sm:w-auto">
-                  Connect with an Advocate
-                </Button>
               </CardFooter>
             </Card>
 
