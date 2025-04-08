@@ -72,7 +72,7 @@ export type StorySubmission = {
               { merge: true }
             );
           } else {
-            console.error('Error writing document:', error)
+            return { success: false, message: `Error submitting story: ${error}` }
           }
         }
       } else {
