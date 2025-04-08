@@ -176,8 +176,8 @@ export default function Support() {
               <CardContent>
                 <div className="space-y-4">
                   <p>
-                    Technology can be misused as a tool for abuse, stalking, and harassment. These tips can help you
-                    protect your digital privacy and safety.
+                  personal safety is absolutely vital—especially for individuals facing the threat of rape or gender-based violence (GBV). 
+                  Here are some personal safety tips to help prevent, prepare for, and respond to dangerous situations:
                   </p>
 
                   <div className="space-y-3">
@@ -238,11 +238,6 @@ export default function Support() {
                   </div>
                 </div>
               </CardContent>
-              <CardFooter>
-                <Button variant="outline" className="w-full \">
-                  Access Detailed Digital Safety Guide
-                </Button>
-              </CardFooter>
             </Card>
           </TabsContent>
         </Tabs>
