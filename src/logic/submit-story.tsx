@@ -1,10 +1,9 @@
 import { doc, setDoc, updateDoc, arrayUnion, getFirestore, arrayRemove } from 'firebase/firestore'
 import {app} from '../utils/firebase'
 import { onAuthStateChanged, getAuth } from 'firebase/auth'
-import { login } from './login'
+import { FirebaseError } from 'firebase/app';
 
 
-let userRef
 export type StorySubmission = {
     id: string
     title: string
@@ -48,28 +47,34 @@ export type StorySubmission = {
   
     //this should save to a database
     onAuthStateChanged(auth, async (user) => {
-      if (user && user.email){
-        const db = getFirestore(app)
-        userRef = doc(db, 'stories', user.email)
+      if (user?.email) {
+        const db = getFirestore(app);
+        const userRef = doc(db, 'stories', user.email);
+  
         try {
           await updateDoc(userRef, {
             stories: arrayUnion(newStory),
-            name: user.displayName
-        })
-        } catch(error: unknown ) {
-          if((error as { code: string }).code === 'not-found') {
-            //incase the user is not in the db we set the user
-            await setDoc(userRef, {
-              stories: arrayUnion(newStory),
-              name: user.displayName
-            }, {merge: true})}
-      }}else{
-        return(<>
-          <h1>Not logged in</h1>
-          <p>Please log in to submit your story.</p>
-          <button onClick={login}>Sign in with Google</button>
-        </>)
-   }})
+            name: user.displayName,
+          });
+        } catch (error) {
+          if ((error as FirebaseError).code === 'not-found') {
+            await setDoc(
+              userRef,
+              {
+                stories: [newStory],
+                name: user.displayName,
+              },
+              { merge: true }
+            );
+          } else {
+            console.error('Error writing document:', error);
+          }
+        }
+      } else {
+        // Show message in your UI instead (not inside this function)
+        alert('Not logged in. Please sign in to submit a story.');
+      }
+    });
 
   
     // Revalidate the stories page to show the updated list
