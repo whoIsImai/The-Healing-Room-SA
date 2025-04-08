@@ -2,17 +2,38 @@ import {Link } from "react-router-dom"
 import { AlertTriangle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState} from "react"
-import {login} from "../../logic/login"
 import {FcGoogle} from 'react-icons/fc'
 import {logout} from "../../logic/logout"
 import {app} from "../../utils/firebase"
-import { getAuth } from "firebase/auth";
+import { getAuth } from "firebase/auth"
+import LoadingOverlay from "@/utils/loading"
+
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+const provider = new GoogleAuthProvider()
 
 export default function NavBar() {
     const auth = getAuth(app)
     const user = auth.currentUser
 
+    const [loading, setLoading] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
+
+    const  login = async()=> {
+
+      try {
+        setLoading(true)
+          const result = await signInWithPopup(auth, provider)
+          const user = result.user
+          alert("Login successful")
+          return user
+      } catch (error) {
+          return error
+      }finally{
+        setLoading(false)
+      }
+        
+  } 
+
 
 
   if(!user) {
@@ -89,6 +110,7 @@ export default function NavBar() {
 }else{
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+       {loading && <LoadingOverlay />}
     <div className="container flex h-auto items-center">
       <div className="mr-4 flex md:flex">
       
@@ -132,7 +154,8 @@ onClick={() => setMenuOpen(!menuOpen)}
           <Link to="/Stories" className="transition-colors hover:text-foreground/80">
               Stories
               </Link>
-              <button  className="transition-colors hover:text-foreground/80 bg-amber-300 p-3 rounded-3xl" onClick={logout}>
+              <button  className="transition-colors hover:text-foreground/80 bg-amber-300 p-3 rounded-3xl" 
+              onClick={logout}>
               Logout
               </button>
 </div>
@@ -146,7 +169,8 @@ onClick={() => setMenuOpen(!menuOpen)}
               <Link to="/Stories" className="transition-colors hover:text-foreground/80">
               Stories
               </Link>
-              <button  className="transition-colors hover:text-foreground/80 bg-amber-300 p-3 rounded-3xl" onClick={logout}>
+              <button  className="transition-colors hover:text-foreground/80 bg-amber-300 p-3 rounded-3xl" 
+              onClick={logout}>
               Logout
               </button>
 </div>
