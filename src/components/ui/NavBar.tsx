@@ -1,5 +1,5 @@
 import {Link } from "react-router-dom"
-import { AlertTriangle, Phone } from "lucide-react"
+import { AlertTriangle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import {login} from "../../logic/login"
@@ -54,11 +54,6 @@ export default function NavBar() {
                     <Link to="/Stories" className="transition-colors hover:text-foreground/80">
                         Stories
                         </Link>
-                   
-                  <Button variant="outline" className="w-auto p-4 rounded">
-                  <Phone className="mr-2 h-4 w-4" />
-                        Helpline
-                 </Button>
                  <Button className="w-auto p-4 rounded flex items-center gap-2" onClick={login}>
                     <FcGoogle size={20} />
                     Sign In With Google
@@ -74,11 +69,6 @@ export default function NavBar() {
                         <Link to="/Stories" className="transition-colors hover:text-foreground/80">
                         Stories
                         </Link>
-                    
-        <Button variant="outline" className="w-auto md:w-auto p-4 rounded">
-          <Phone className="mr-2 h-4 w-4" />
-          Helpline
-        </Button>
         <Button className="w-auto p-2 rounded flex items-center gap-2" onClick={login}>
           <FcGoogle size={20} />
             Sign In With Google
