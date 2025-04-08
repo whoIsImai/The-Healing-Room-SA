@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlertCircle, Globe, Headphones, Phone } from "lucide-react"
-import NavBar from "./NavBar"
+import NavBar from "../components/ui/NavBar"
 import {CitySelect} from "@/lib/city"
 
 export default function Support() {

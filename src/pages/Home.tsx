@@ -2,7 +2,7 @@ import {Link } from 'react-router-dom'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { BookOpen, HelpCircle, Info } from "lucide-react"
-import NavBar from './NavBar'
+import NavBar from '../components/ui/NavBar'
 
 export default function Home() {
     return (

@@ -1,7 +1,7 @@
 import {  collection, getDocs, getFirestore } from 'firebase/firestore'
 import StoryForm from "../logic/Story-form"
 import StoryList from "../logic/Story-list"
-import NavBar from "./NavBar"
+import NavBar from "../components/ui/NavBar"
 import { StorySubmission } from "../logic/submit-story"
 import { useState, useEffect} from 'react'
 import { app } from '../utils/firebase'

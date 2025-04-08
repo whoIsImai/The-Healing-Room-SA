@@ -2,7 +2,7 @@ import {Link } from "react-router-dom"
 import { AlertTriangle, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
-import {login} from "../logic/login"
+import {login} from "../../logic/login"
 import {FcGoogle} from 'react-icons/fc'
 
 export default function NavBar() {
