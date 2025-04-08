@@ -55,13 +55,13 @@ export default function NavBar() {
                         Stories
                         </Link>
                    
-                  <Button variant="outline" className="w-full p-4 rounded">
+                  <Button variant="outline" className="w-auto p-4 rounded">
                   <Phone className="mr-2 h-4 w-4" />
                         Helpline
                  </Button>
-                 <Button className="w-full p-4 rounded flex items-center gap-2" onClick={login}>
+                 <Button className="w-auto p-4 rounded flex items-center gap-2" onClick={login}>
                     <FcGoogle size={20} />
-                   Sign In With Google
+                    Sign In With Google
                   </Button>
         </div>
       )}
@@ -75,14 +75,14 @@ export default function NavBar() {
                         Stories
                         </Link>
                     
-        <Button variant="outline" className="w-full md:w-auto p-4 rounded">
+        <Button variant="outline" className="w-auto md:w-auto p-4 rounded">
           <Phone className="mr-2 h-4 w-4" />
           Helpline
         </Button>
-        <Button className="w-full p-4 rounded flex items-center gap-2" onClick={login}>
-                    <FcGoogle size={20} />
-                   Sign In With Google
-                  </Button>
+        <Button className="w-auto p-2 rounded flex items-center gap-2" onClick={login}>
+          <FcGoogle size={20} />
+            Sign In With Google
+          </Button>
       </div>
     </div>
 
