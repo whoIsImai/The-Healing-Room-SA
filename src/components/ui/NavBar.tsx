@@ -4,20 +4,19 @@ import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import {login} from "../../logic/login"
 import {FcGoogle} from 'react-icons/fc'
-
+import {logout} from "../../logic/logout"
 import {app} from "../../utils/firebase"
 import { getAuth } from "firebase/auth";
 
 export default function NavBar() {
     const auth = getAuth(app)
     const user = auth.currentUser
-    const [userName, setUserName] = useState(user?.displayName || '')
-    const [userEmail, setUserEmail] = useState(user?.email || '')
+  
     const [userPhoto, setUserPhoto] = useState(user?.photoURL || '')
+    const [userName, setUserName] = useState(user?.displayName || '')
 
-    setUserName(user?.displayName || '')
-    setUserEmail(user?.email || '')
     setUserPhoto(user?.photoURL || '')
+    setUserName(user?.displayName || '')
   const [menuOpen, setMenuOpen] = useState(false)
 
   if(!user) {
@@ -137,12 +136,12 @@ onClick={() => setMenuOpen(!menuOpen)}
           <Link to="/Stories" className="transition-colors hover:text-foreground/80">
               Stories
               </Link>
-              <button  className="transition-colors hover:text-foreground/80">
+              <button  className="transition-colors hover:text-foreground/80" onClick={logout}>
               Logout
               </button>
        <Button className="w-auto p-4 rounded flex items-center gap-2" onClick={login}>
           <img src={userPhoto} />
-          Sign In With Google
+          {userName}
         </Button>
 </div>
 )}
@@ -155,11 +154,12 @@ onClick={() => setMenuOpen(!menuOpen)}
               <Link to="/Stories" className="transition-colors hover:text-foreground/80">
               Stories
               </Link>
-              <button  className="transition-colors hover:text-foreground/80">
+              <button  className="transition-colors hover:text-foreground/80" onClick={logout}>
               Logout
               </button>
 <Button className="w-auto p-2 rounded flex items-center gap-2" onClick={login}>
 <img src={userPhoto} />
+{userName}
 </Button>
 </div>
 </div>
