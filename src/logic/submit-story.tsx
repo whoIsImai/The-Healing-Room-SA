@@ -1,4 +1,4 @@
-import { doc, setDoc, updateDoc, arrayUnion, getFirestore, collection, query, getDocs, arrayRemove } from 'firebase/firestore'
+import { doc, setDoc, updateDoc, arrayUnion, getFirestore, arrayRemove } from 'firebase/firestore'
 import {app} from '../utils/firebase'
 import { onAuthStateChanged, getAuth } from 'firebase/auth'
 import { login } from './login'
@@ -15,22 +15,8 @@ export type StorySubmission = {
   }
   const auth = getAuth(app)
  
-
-  export async function getStories() {   
-      const db = getFirestore(app)
-      userRef = doc(db, 'users')
-      const storiesRef = collection(db, 'stories')
-      const q = query(storiesRef)
-      const querySnapshot = await getDocs(q)
-      const stories: StorySubmission[] = []
-      querySnapshot.forEach((doc) => {
-        stories.push(doc.data() as StorySubmission)
-      })
-      return stories
   
-  }
-  
-  export async function submitStory(formData: FormData) {
+  export function submitStory(formData: FormData) {
     // Add validation here
     const title = formData.get("title") as string
     const content = formData.get("content") as string

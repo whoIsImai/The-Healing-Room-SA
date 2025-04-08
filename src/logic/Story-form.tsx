@@ -22,7 +22,7 @@ export default function StoryForm() {
     setFormResponse(null)
 
     try {
-      const response = await submitStory(formData)
+      const response =  submitStory(formData)
       setFormResponse(response)
 
       if (response.success) {

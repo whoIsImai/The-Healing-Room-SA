@@ -1,13 +1,34 @@
-import { getStories } from "../logic/submit-story"
+import {  collection, getDocs, getFirestore } from 'firebase/firestore'
 import StoryForm from "../logic/Story-form"
 import StoryList from "../logic/Story-list"
+import NavBar from "./NavBar"
+import { StorySubmission } from "../logic/submit-story"
+import { useState, useEffect} from 'react'
+import { app } from '../utils/firebase'
 
-export default async function Stories() {
-  const stories = await getStories()
+export default function Stories() {
+  const [stories, setStories] = useState<StorySubmission[]>([])
+
+  useEffect(() => {
+    const fetchStories = async () => {
+      const db = getFirestore(app)
+      const snapshot = await getDocs(collection(db, 'stories'));
+      const data = snapshot.docs.map(doc => doc.data() as StorySubmission);
+      setStories(data);
+    };
+
+    fetchStories();
+  }, []);
+   
+    
+   
+
 
   return (
-    <div className="container py-10">
-      <div className="space-y-8">
+    <>
+        <NavBar />
+    <div className="container py-10 items-center sm:py-20">
+      <div className="space-y-8 flex flex-col items-center justify-center">
         <div className="space-y-2">
           <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
             Stories of Survival & Resilience
@@ -28,6 +49,7 @@ export default async function Stories() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
