@@ -13,7 +13,7 @@ export default function StoryList({ stories }: { stories: StorySubmission[] }) {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 ml-4">
       <Alert>
         <AlertTriangle className="h-4 w-4" />
         <AlertTitle>Content Warning</AlertTitle>
@@ -38,14 +38,14 @@ function StoryCard({ story }: { story: StorySubmission }) {
   }).format(story.createdAt)
 
   return (
-    <Card>
-      <CardHeader>
+    <Card className="w-full max-w-sm md:max-w-md lg:max-w-lg">
+      <CardHeader className="w-full">
         <CardTitle>{story.title}</CardTitle>
         <CardDescription>
           Shared by {story.author} on {formattedDate}
         </CardDescription>
       </CardHeader>
-      <CardContent className="p-4">
+      <CardContent className="p-4 w-full">
         <div className="prose prose-rose prose-sm max-w-none w-full break-words">
           {story.content.split("\n").map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
