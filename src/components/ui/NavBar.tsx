@@ -31,8 +31,17 @@ export default function NavBar() {
       }finally{
         setLoading(false)
       }
-        
   } 
+
+  const logout = async () => {
+    try {
+        await auth.signOut()
+       return
+    } catch (error) {
+       return error
+    }
+}
+
 
 
 
