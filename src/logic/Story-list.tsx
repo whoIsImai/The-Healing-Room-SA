@@ -31,18 +31,12 @@ export default function StoryList({ stories }: { stories: StorySubmission[] }) {
 }
 
 function StoryCard({ story }: { story: StorySubmission }) {
-  const formattedDate = new Intl.DateTimeFormat("en-ZA", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(story.createdAt)
-
   return (
     <Card className="w-full max-w-sm md:max-w-md lg:max-w-lg">
       <CardHeader className="w-full">
         <CardTitle>{story.title}</CardTitle>
         <CardDescription>
-          Shared by {story.author} on {formattedDate}
+          Shared by {story.author} on {story.createdAt}
         </CardDescription>
       </CardHeader>
       <CardContent className="p-4 w-full">
