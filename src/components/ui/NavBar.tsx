@@ -23,7 +23,6 @@ export default function NavBar() {
         setLoading(true)
           const result = await signInWithPopup(auth, provider)
           const user = result.user
-          alert("Login successful")
           return user
       } catch (error) {
           return error
