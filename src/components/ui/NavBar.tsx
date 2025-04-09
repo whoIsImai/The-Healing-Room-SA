@@ -34,10 +34,13 @@ export default function NavBar() {
 
   const logout = async () => {
     try {
+        setLoading(true)
         await auth.signOut()
        return
     } catch (error) {
        return error
+    } finally{
+        setLoading(false)
     }
 }
 
