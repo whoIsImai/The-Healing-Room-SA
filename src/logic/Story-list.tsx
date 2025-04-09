@@ -1,7 +1,6 @@
 import type { StorySubmission } from "./submit-story"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { AlertTriangle, Heart, MessageSquare, Share2 } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { AlertTriangle } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 export default function StoryList({ stories }: { stories: StorySubmission[] }) {
@@ -46,29 +45,13 @@ function StoryCard({ story }: { story: StorySubmission }) {
           Shared by {story.author} on {formattedDate}
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <div className="prose prose-rose max-w-none">
+      <CardContent className="p-4">
+        <div className="prose prose-rose prose-sm max-w-none w-full break-words">
           {story.content.split("\n").map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <div className="flex space-x-4">
-          <Button variant="ghost" size="sm" className="text-gray-500 hover:text-rose-600">
-            <Heart className="mr-1 h-4 w-4" />
-            Support
-          </Button>
-          <Button variant="ghost" size="sm" className="text-gray-500">
-            <MessageSquare className="mr-1 h-4 w-4" />
-            Comment
-          </Button>
-        </div>
-        <Button variant="ghost" size="sm" className="text-gray-500">
-          <Share2 className="mr-1 h-4 w-4" />
-          Share
-        </Button>
-      </CardFooter>
     </Card>
   )
 }
