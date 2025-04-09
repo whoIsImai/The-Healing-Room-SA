@@ -1,8 +1,11 @@
 export default function LoadingOverlay(){
     return(
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-    </div>
+      <div className='flex space-x-2 justify-center items-center bg-white h-screen dark:invert'>
+      <span className='sr-only'>Loading...</span>
+       <div className='h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+     <div className='h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+     <div className='h-8 w-8 bg-black rounded-full animate-bounce'></div>
+   </div>
   )
 }
   
