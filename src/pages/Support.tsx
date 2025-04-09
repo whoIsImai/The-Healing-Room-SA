@@ -5,7 +5,16 @@ import { AlertCircle, Globe, Headphones, Phone } from "lucide-react"
 import NavBar from "../components/ui/NavBar"
 import {CitySelect} from "@/lib/city"
 
+
 export default function Support() {
+
+  const download = ()=> {
+    const downloadPDF = '../components/downloadPDF.pdf'
+    const link = document.createElement('a')
+    link.href = downloadPDF
+    link.download = 'SafetyPlanTemplate.pdf'
+    link.click()
+  }
 
   return (
     <div className="flex min-h-screen flex-col pl-[1em]">
@@ -164,7 +173,7 @@ export default function Support() {
                 </div>
               </CardContent>
               <CardFooter className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
-                <Button className="w-full sm:w-auto">Download Safety Plan Template</Button>
+                <Button className="w-full sm:w-auto" onClick={download}>Download Safety Plan Template</Button>
               </CardFooter>
             </Card>
 
