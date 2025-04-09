@@ -3,7 +3,6 @@ import { AlertTriangle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState} from "react"
 import {FcGoogle} from 'react-icons/fc'
-import {logout} from "../../logic/logout"
 import {app} from "../../utils/firebase"
 import { getAuth } from "firebase/auth"
 import LoadingOverlay from "@/utils/loading"
