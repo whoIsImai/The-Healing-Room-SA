@@ -31,7 +31,7 @@ export default function StoryList({ stories }: { stories: StorySubmission[] }) {
 }
 
 function StoryCard({ story }: { story: StorySubmission }) {
-  const formattedDate = new Intl.DateTimeFormat("en-US", {
+  const formattedDate = new Intl.DateTimeFormat("en-ZA", {
     year: "numeric",
     month: "long",
     day: "numeric",

@@ -9,7 +9,7 @@ export type StorySubmission = {
     content: string
     author: string
     isAnonymous: boolean
-    createdAt: Date
+    createdAt: string
   }
   const auth = getAuth(app)
   
@@ -32,7 +32,8 @@ export type StorySubmission = {
     if (!isAnonymous && (!author || author.length < 2)) {
       return { success: false, message: "Please provide your name or check the anonymous option" }
     }
-  
+      const date = new Date()
+      const formatedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
     // Create new story
     const newStory: StorySubmission = {
       id: Date.now().toString(),
@@ -40,7 +41,7 @@ export type StorySubmission = {
       content,
       author: isAnonymous ? "Anonymous" : author,
       isAnonymous,
-      createdAt: new Date()
+      createdAt: formatedDate
     }
   
     const user = auth.currentUser
