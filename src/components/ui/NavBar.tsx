@@ -23,11 +23,14 @@ export default function NavBar() {
         setLoading(true)
         await signInWithPopup(auth, provider)
         .then ((result) => {
-          const user = result.user
-          setUSer(user)
+        const userr = result.user
+        console.log(userr)
+          setUSer(userr)
+
         })
+         
       } catch (error) {
-          console.error("Error signing in with Google:", error)
+          console.error(error) 
       }finally{
         setLoading(false)
       }
