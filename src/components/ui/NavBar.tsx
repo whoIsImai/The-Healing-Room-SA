@@ -12,24 +12,26 @@ const provider = new GoogleAuthProvider()
 
 export default function NavBar() {
     const auth = getAuth(app)
-    const user = auth.currentUser
+    const [user,setUSer] = useState(auth.currentUser)
 
     const [loading, setLoading] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
 
     const  login = async()=> {
-
+      if(!user) {
       try {
         setLoading(true)
-          await signInWithPopup(auth, provider)
-         
-          return 
+        await signInWithPopup(auth, provider)
+        .then ((result) => {
+          const user = result.user
+          setUSer(user)
+        })
       } catch (error) {
-          return error
+          console.error("Error signing in with Google:", error)
       }finally{
         setLoading(false)
       }
-  } 
+  } }
 
   const logout = async () => {
     try {
