@@ -21,9 +21,9 @@ export default function NavBar() {
 
       try {
         setLoading(true)
-           await signInWithPopup(auth, provider)
-          //const user = result.user
-          //return user
+          await signInWithPopup(auth, provider)
+         
+          return 
       } catch (error) {
           return error
       }finally{
