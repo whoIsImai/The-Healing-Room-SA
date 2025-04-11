@@ -40,7 +40,7 @@ const TermsAndConditions = () => {
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-2">4. Respectful Use of Content</h2>
         <ul className="list-disc list-inside space-y-1">
-          <li>All stories and content published on this site are the intellectual property of their original authors and/or [Your Site Name].</li>
+          <li>All stories and content published on this site are the intellectual property of their original authors and/or The Healing Room SA.</li>
           <li>Reproduction, redistribution, or commercial use of content is not permitted without written permission.</li>
           <li>You may share links to stories and articles with proper credit to the site.</li>
         </ul>
