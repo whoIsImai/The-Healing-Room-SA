@@ -18,7 +18,6 @@ export default function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false)
 
     const  login = async()=> {
-      if(!user) {
       try {
         setLoading(true)
         await signInWithPopup(auth, provider)
@@ -26,15 +25,12 @@ export default function NavBar() {
         const userr = result.user
         console.log(userr)
           setUSer(userr)
-
         })
-         
       } catch (error) {
           console.error(error) 
       }finally{
         setLoading(false)
-      }
-  } }
+      } }
 
   const logout = async () => {
     try {
