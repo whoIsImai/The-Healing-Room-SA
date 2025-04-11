@@ -7,7 +7,7 @@ import {app} from "../../utils/firebase"
 import { getAuth } from "firebase/auth"
 import LoadingOverlay from "@/utils/loading"
 
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult } from "firebase/auth"
 const provider = new GoogleAuthProvider()
 
 export default function NavBar() {
@@ -20,17 +20,28 @@ export default function NavBar() {
     const  login = async()=> {
       try {
         setLoading(true)
-        await signInWithPopup(auth, provider)
+        if(menuOpen){
+          await signInWithRedirect(auth, provider)
+          const redirectResult = await getRedirectResult(auth)
+          if (redirectResult) {
+            const userr = redirectResult.user
+            console.log(userr)
+            setUSer(userr)
+          }
+        }else{
+          await signInWithPopup(auth, provider)
         .then ((result) => {
         const userr = result.user
         console.log(userr)
           setUSer(userr)
         })
+        }
       } catch (error) {
           console.error(error) 
       }finally{
         setLoading(false)
-      } }
+      }
+     }
 
   const logout = async () => {
     try {
