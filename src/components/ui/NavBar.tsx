@@ -1,7 +1,7 @@
 import {Link } from "react-router-dom"
 import { AlertTriangle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useState, useEffect} from "react"
+import { useState} from "react"
 import {FcGoogle} from 'react-icons/fc'
 import {app} from "../../utils/firebase"
 import { getAuth } from "firebase/auth"
@@ -17,9 +17,7 @@ export default function NavBar() {
     const [loading, setLoading] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
 
-   function HandleLogin() {
-    useEffect(() => {
-      async function login() {
+   async function HandleLogin() {
         try {
           setLoading(true)
           if (menuOpen) {
@@ -41,9 +39,6 @@ export default function NavBar() {
           setLoading(false)
         }
       }
-      login()
-    }, [])
-  }
     
   const logout = async () => {
     try {
