@@ -1,7 +1,7 @@
 import {Link } from "react-router-dom"
 import { AlertTriangle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useState} from "react"
+import { useState, useEffect} from "react"
 import {FcGoogle} from 'react-icons/fc'
 import {app} from "../../utils/firebase"
 import { getAuth } from "firebase/auth"
@@ -12,35 +12,40 @@ const provider = new GoogleAuthProvider()
 
 export default function NavBar() {
     const auth = getAuth(app)
-    const [user,setUSer] = useState(auth.currentUser)
+    //const user = auth.currentUser
 
     const [loading, setLoading] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
 
-    const  login = async()=> {
-      try {
-        setLoading(true)
-        if(menuOpen){
-          await signInWithRedirect(auth, provider)
-          const redirectResult = await getRedirectResult(auth)
-          if (redirectResult) {
-            const userr = redirectResult.user
-            setUSer(userr)
-          }
-        }else{
-          await signInWithPopup(auth, provider)
-        .then ((result) => {
-        const userr = result.user
-          setUSer(userr)
-        })
-        }
-      } catch (error) {
-          console.error(error) 
-      }finally{
-        setLoading(false)
-      }
-     }
+    const [user, setUser] = useState(auth.currentUser)
 
+   const HandleLogin = ()=> {
+       useEffect(() =>{
+      const  login = async()=> {
+        try {
+          setLoading(true)
+          if(menuOpen){
+            await signInWithRedirect(auth, provider)
+            const redirectResult = await getRedirectResult(auth)
+            if (redirectResult) {
+            const user = redirectResult.user
+            setUser(user)
+            }
+          }else{
+            await signInWithPopup(auth, provider)
+            const user = auth.currentUser
+            setUser(user)
+          }
+        } catch (error) {
+            console.error(error) 
+        }finally{
+          setLoading(false)
+        }
+       }
+        login()    
+    }, [])
+  }
+    
   const logout = async () => {
     try {
         setLoading(true)
@@ -105,7 +110,7 @@ export default function NavBar() {
                     <Link to="/Stories" className="transition-colors hover:text-foreground/80">
                         Stories
                         </Link>
-                 <Button className="w-auto p-4 rounded flex items-center gap-2" onClick={login}>
+                 <Button className="w-auto p-4 rounded flex items-center gap-2" onClick={HandleLogin}>
                     <FcGoogle size={20} />
                     Sign In With Google
                   </Button>
@@ -120,7 +125,7 @@ export default function NavBar() {
                         <Link to="/Stories" className="transition-colors hover:text-foreground/80">
                         Stories
                         </Link>
-        <Button className="w-auto p-2 rounded flex items-center gap-2" onClick={login}>
+        <Button className="w-auto p-2 rounded flex items-center gap-2" onClick={HandleLogin}>
           <FcGoogle size={20} />
             Sign In With Google
           </Button>
