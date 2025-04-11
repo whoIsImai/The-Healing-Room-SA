@@ -12,12 +12,10 @@ const provider = new GoogleAuthProvider()
 
 export default function NavBar() {
     const auth = getAuth(app)
-    //const user = auth.currentUser
+    const user = auth.currentUser
 
     const [loading, setLoading] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
-
-    const [user, setUser] = useState(auth.currentUser)
 
    const HandleLogin = ()=> {
        useEffect(() =>{
@@ -28,13 +26,14 @@ export default function NavBar() {
             await signInWithRedirect(auth, provider)
             const redirectResult = await getRedirectResult(auth)
             if (redirectResult) {
-            const user = redirectResult.user
-            setUser(user)
+            console.log("User signed in:")
             }
           }else{
             await signInWithPopup(auth, provider)
             const user = auth.currentUser
-            setUser(user)
+            if (user) {
+              console.log("User signed in:")
+            }
           }
         } catch (error) {
             console.error(error) 
