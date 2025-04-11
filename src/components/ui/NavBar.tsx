@@ -44,10 +44,10 @@ export default function NavBar() {
     try {
         setLoading(true)
         await auth.signOut()
-       return
+       console.log("User signed out")
     } catch (error) {
       console.error(error)
-       return error
+       console.error("Error signing out:", error)
     } finally{
         setLoading(false)
     }
