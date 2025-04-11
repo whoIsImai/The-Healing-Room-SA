@@ -25,14 +25,12 @@ export default function NavBar() {
           const redirectResult = await getRedirectResult(auth)
           if (redirectResult) {
             const userr = redirectResult.user
-            console.log(userr)
             setUSer(userr)
           }
         }else{
           await signInWithPopup(auth, provider)
         .then ((result) => {
         const userr = result.user
-        console.log(userr)
           setUSer(userr)
         })
         }
@@ -49,6 +47,7 @@ export default function NavBar() {
         await auth.signOut()
        return
     } catch (error) {
+      console.error(error)
        return error
     } finally{
         setLoading(false)
