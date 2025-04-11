@@ -1,7 +1,7 @@
-import {Link } from "react-router-dom"
+import {Link, useNavigate } from "react-router-dom"
 import { AlertTriangle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useState} from "react"
+import { useState, useEffect} from "react"
 import {FcGoogle} from 'react-icons/fc'
 import {app} from "../../utils/firebase"
 import { getAuth } from "firebase/auth"
@@ -22,10 +22,6 @@ export default function NavBar() {
           setLoading(true)
           if (menuOpen) {
             await signInWithRedirect(auth, provider)
-            const redirectResult = await getRedirectResult(auth)
-            if (redirectResult) {
-              console.log("User signed in:")
-            }
           } else {
             await signInWithPopup(auth, provider)
             const user = auth.currentUser
@@ -39,6 +35,19 @@ export default function NavBar() {
           setLoading(false)
         }
       }
+const navigate = useNavigate();
+useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          console.log("User signed in (redirect):")
+          navigate("/")
+        }
+      })
+      .catch((error) => {
+        console.error("Redirect login error:", error)
+      })
+  }, [auth, navigate])
     
   const logout = async () => {
     try {
