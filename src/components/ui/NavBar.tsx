@@ -17,18 +17,18 @@ export default function NavBar() {
     const [loading, setLoading] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
 
-   const HandleLogin = ()=> {
-       useEffect(() =>{
-      const  login = async()=> {
+   function HandleLogin() {
+    useEffect(() => {
+      async function login() {
         try {
           setLoading(true)
-          if(menuOpen){
+          if (menuOpen) {
             await signInWithRedirect(auth, provider)
             const redirectResult = await getRedirectResult(auth)
             if (redirectResult) {
-            console.log("User signed in:")
+              console.log("User signed in:")
             }
-          }else{
+          } else {
             await signInWithPopup(auth, provider)
             const user = auth.currentUser
             if (user) {
@@ -36,12 +36,12 @@ export default function NavBar() {
             }
           }
         } catch (error) {
-            console.error(error) 
-        }finally{
+          console.error(error)
+        } finally {
           setLoading(false)
         }
-       }
-        login()    
+      }
+      login()
     }, [])
   }
     
