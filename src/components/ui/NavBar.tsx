@@ -40,7 +40,7 @@ useEffect(() => {
     getRedirectResult(auth)
       .then((result) => {
         if (result?.user) {
-          console.log("User signed in (redirect):")
+          alert("User signed in (redirect):")
           navigate("/")
         }
       })
