@@ -1,6 +1,6 @@
 import type { StorySubmission } from "./submit-story"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { AlertTriangle } from "lucide-react"
+import { AlertTriangle, Trash2 } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 export default function YourStoryList({ stories }: { stories: StorySubmission[] }) {
@@ -50,6 +50,7 @@ function StoryCard({ story }: { story: StorySubmission }) {
             <p key={index}>{paragraph}</p>
           ))}
         </div>
+        <Trash2 className="w-4 h-4"/>
       </CardContent>
     </Card>
   )
