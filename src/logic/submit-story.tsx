@@ -1,4 +1,4 @@
-import { doc, setDoc, updateDoc, arrayUnion, getFirestore, arrayRemove, getDoc } from 'firebase/firestore'
+import { doc, setDoc, updateDoc, arrayUnion, getFirestore, arrayRemove } from 'firebase/firestore'
 import {app} from '../utils/firebase'
 import { getAuth } from 'firebase/auth'
 import { FirebaseError } from 'firebase/app';
@@ -106,20 +106,4 @@ export type StorySubmission = {
       throw error
     }
   }
-
-  export async function getUserStory(email: string){
-    
-    const db = getFirestore(app)
-    const userRef = doc(db, 'stories', email);
-  const docSnap = await getDoc(userRef);
-
-  if (docSnap.exists()) {
-    const data = docSnap.data();
-    const stories = data.stories || []
-    return stories;
-  } else {
-    console.log("No such document!");
-    return [];
-  }
-}
   
