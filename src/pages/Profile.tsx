@@ -31,6 +31,8 @@ interface Profileprops {
         picture: user?.photoURL || DefaultAvatar,
         } satisfies Required<Profileprops>
 
+
+        
 export default function Profile({
     name = defaultProfile.name,
     edit = defaultProfile.edit,
