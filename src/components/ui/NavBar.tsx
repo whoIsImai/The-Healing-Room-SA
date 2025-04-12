@@ -31,21 +31,6 @@ export default function NavBar() {
           setLoading(false)
         }
       }
-    
-  const logout = async () => {
-    try {
-        setLoading(true)
-        await auth.signOut()
-       console.log("User signed out")
-    } catch (error) {
-      console.error(error)
-       console.error("Error signing out:", error)
-    } finally{
-        setLoading(false)
-    }
-}
-
-
 
 
   if(!user) {
@@ -170,10 +155,9 @@ onClick={() => setMenuOpen(!menuOpen)}
           <Link to="/Stories" className="transition-colors hover:text-foreground/80">
               Stories
               </Link>
-              <button  className="transition-colors hover:text-foreground/80 bg-amber-300 p-3 rounded-3xl" 
-              onClick={logout}>
-              Logout
-              </button>
+              <Link to="/Profile" className="transition-colors hover:text-foreground/80">
+              Profile
+              </Link>
 </div>
 )}
 
@@ -185,10 +169,9 @@ onClick={() => setMenuOpen(!menuOpen)}
               <Link to="/Stories" className="transition-colors hover:text-foreground/80">
               Stories
               </Link>
-              <button  className="transition-colors hover:text-foreground/80 bg-amber-300 p-3 rounded-3xl" 
-              onClick={logout}>
-              Logout
-              </button>
+              <Link to="/Profile" className="transition-colors hover:text-foreground/80">
+              Profile
+              </Link>
 </div>
 </div>
 
