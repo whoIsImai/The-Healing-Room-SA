@@ -1,7 +1,7 @@
 import {Link } from "react-router-dom"
 import {app} from "../utils/firebase"
 import { getAuth } from "firebase/auth"
-import DefaultAvatar from '../../public/Profile-PNG-Photo.png'
+import DefaultAvatar from '../../public/Profile.png'
 import { ScrollText, FileText, MoveUpRight, LogOut } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
@@ -32,7 +32,7 @@ interface Profileprops {
         } satisfies Required<Profileprops>
 
 
-        
+
 export default function Profile({
     name = defaultProfile.name,
     edit = defaultProfile.edit,
