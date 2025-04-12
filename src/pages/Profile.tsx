@@ -1,4 +1,4 @@
-import {Link } from "react-router-dom"
+import {Link, useNavigate } from "react-router-dom"
 import {app} from "../utils/firebase"
 import { getAuth } from "firebase/auth"
 import DefaultAvatar from '../../public/Profile.png'
@@ -6,7 +6,7 @@ import { ScrollText, FileText, MoveUpRight, LogOut } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import LoadingOverlay from "@/utils/loading"
-
+import NavBar from '../components/ui/NavBar'
 
 interface MenuItem {
     label: string
@@ -40,6 +40,7 @@ export default function Profile({
 }: Partial<Profileprops> = defaultProfile){
 
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     const menuItems: MenuItem[] = [
         {
@@ -59,6 +60,7 @@ export default function Profile({
            try {
                setLoading(true)
                await auth.signOut()
+               navigate("/")
               console.log("User signed out")
            } catch (error) {
              console.error(error)
@@ -71,7 +73,8 @@ export default function Profile({
   return (
      <>
            {loading && <LoadingOverlay />}
-    <div className="w-full max-w-sm mx-auto">
+        <NavBar/>
+    <div className="w-full max-w-sm mx-auto mt-4">
       <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
         <div className="relative px-6 pt-12 pb-6">
           <div className="flex items-center gap-4 mb-8">
@@ -121,7 +124,7 @@ export default function Profile({
             >
               <div className="flex items-center gap-2">
                 <LogOut className="w-4 h-4" />
-                <Button className="text-sm font-medium text-zinc-900 dark:text-zinc-100"
+                <Button className="text-sm font-medium text-white bg-black"
                 onClick={logout}
                 >Logout</Button>
               </div>
