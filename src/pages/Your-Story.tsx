@@ -8,7 +8,7 @@ import { getAuth } from "firebase/auth"
 
   const auth = getAuth(app)
 
-export function YourStories(){
+export default function YourStories(){
     const [stories, setStories] = useState<StorySubmission[]>([])
 
     const user = auth.currentUser
