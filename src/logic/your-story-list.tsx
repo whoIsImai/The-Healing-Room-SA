@@ -1,13 +1,14 @@
-import type { StorySubmission } from "./submit-story"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { StorySubmission, deleteStory } from "./submit-story"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { AlertTriangle, Trash2 } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Button } from "@/components/ui/button"
 
 export default function YourStoryList({ stories }: { stories: StorySubmission[] }) {
     if (stories.length === 0) {
         return (
           <div className="text-center py-12">
-            <p className="text-gray-500">You have no stories have been shared.</p>
+            <p className="text-gray-500">You have no stories shared.</p>
           </div>
         )
       }
@@ -50,8 +51,12 @@ function StoryCard({ story }: { story: StorySubmission }) {
             <p key={index}>{paragraph}</p>
           ))}
         </div>
-        <Trash2 className="w-4 h-4"/>
       </CardContent>
+      <CardFooter>
+        <Button onClick={() => deleteStory(story.id)}>
+          <Trash2 className="w-4 h-4"/>
+        </Button>
+      </CardFooter>
     </Card>
   )
 }
