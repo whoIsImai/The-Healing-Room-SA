@@ -3,6 +3,9 @@ import {app} from "../utils/firebase"
 import { getAuth } from "firebase/auth"
 import DefaultAvatar from '../../public/Profile-PNG-Photo.png'
 import { ScrollText, FileText, MoveUpRight, LogOut } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { useState } from "react"
+import LoadingOverlay from "@/utils/loading"
 
 
 interface MenuItem {
@@ -34,23 +37,38 @@ export default function Profile({
     picture = defaultProfile.picture,
 }: Partial<Profileprops> = defaultProfile){
 
+    const [loading, setLoading] = useState(false)
+
     const menuItems: MenuItem[] = [
         {
           label: "Your Stories",
-          href: "#",
+          href: "/your-stories",
           icon: <ScrollText className="w-4 h-4" />,
         },
         {
           label: "Terms & Policies",
-          href: "#",
+          href: "/Terms",
           icon: <FileText className="w-4 h-4" />,
           external: true,
         }
       ]
 
-       
+       const logout = async () => {
+           try {
+               setLoading(true)
+               await auth.signOut()
+              console.log("User signed out")
+           } catch (error) {
+             console.error(error)
+              console.error("Error signing out:", error)
+           } finally{
+               setLoading(false)
+           }
+       }
       
   return (
+     <>
+           {loading && <LoadingOverlay />}
     <div className="w-full max-w-sm mx-auto">
       <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
         <div className="relative px-6 pt-12 pb-6">
@@ -101,12 +119,14 @@ export default function Profile({
             >
               <div className="flex items-center gap-2">
                 <LogOut className="w-4 h-4" />
-                <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Logout</span>
+                <Button className="text-sm font-medium text-zinc-900 dark:text-zinc-100"
+                onClick={logout}
+                >Logout</Button>
               </div>
             </button>
           </div>
         </div>
       </div>
     </div>
-
+    </>
     )}
