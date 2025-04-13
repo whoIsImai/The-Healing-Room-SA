@@ -1,34 +1,40 @@
 import {Link } from "react-router-dom"
 import { AlertTriangle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useState} from "react"
+import { useState, useEffect} from "react"
 import {FcGoogle} from 'react-icons/fc'
 import {app} from "../../utils/firebase"
-import { getAuth, User } from "firebase/auth"
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, User } from "firebase/auth"
 import LoadingOverlay from "@/utils/loading"
 
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
-const provider = new GoogleAuthProvider()
+const provider = new GoogleAuthProvider();
+const auth = getAuth(app)
 
 export default function NavBar() {
-    const auth = getAuth(app)
-   const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User | null>(null)
+  const [loading, setLoading] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
-    const [loading, setLoading] = useState(false)
-    const [menuOpen, setMenuOpen] = useState(false)
+  // Set up persistent auth state listener
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    });
 
-   async function HandleLogin() {
-        try {
-          setLoading(true)
-            await signInWithPopup(auth, provider)
-            const user = auth.currentUser
-            setUser(user)
-        } catch (error) {
-          console.error(error)
-        } finally {
-          setLoading(false)
-        }
-      }
+    return () => unsubscribe()
+  }, [])
+
+  async function HandleLogin() {
+    try {
+      setLoading(true)
+      await signInWithPopup(auth, provider);
+      // `onAuthStateChanged` will automatically update `user`
+    } catch (error) {
+      console.error("Login error:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
 
   if(!user) {
