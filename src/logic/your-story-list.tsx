@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { AlertTriangle, Trash2 } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
+import Overlay from "@/utils/deleteOverlay"
+import { useState } from "react"
 
 export default function YourStoryList({ stories }: { stories: StorySubmission[] }) {
     if (stories.length === 0) {
@@ -37,6 +39,8 @@ function StoryCard({ story }: { story: StorySubmission }) {
     day: "numeric",
   }).format()
 
+  const [showOverlay, setShowOverlay] = useState(false)
+
   return (
     <Card className="w-full max-w-sm md:max-w-md lg:max-w-lg">
       <CardHeader className="w-full">
@@ -53,9 +57,13 @@ function StoryCard({ story }: { story: StorySubmission }) {
         </div>
       </CardContent>
       <CardFooter>
-        <Button onClick={() => deleteStory(story.id)}>
+        <Button onClick={() => {
+          setShowOverlay(true)
+          deleteStory(story.id)
+          }}>
           <Trash2 className="w-4 h-4"/>
         </Button>
+        <Overlay show={showOverlay} message="Story removed successfully" />
       </CardFooter>
     </Card>
   )
