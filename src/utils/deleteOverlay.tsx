@@ -6,7 +6,7 @@ export default function Overlay({ show, message }: { show: boolean; message: str
   useEffect(() => {
     if (show) {
       setVisible(true)
-      const timer = setTimeout(() => setVisible(false), 4000)
+      const timer = setTimeout(() => setVisible(false), 2000)
       return () => clearTimeout(timer)
     }
   }, [show])
