@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { StorySubmission } from "@/logic/submit-story"
 import YourStoryList from "@/logic/your-story-list"
 import NavBar from "@/components/ui/NavBar"
-import { collection, getDocs, getFirestore } from "firebase/firestore"
+import { doc, getDoc, getFirestore } from "firebase/firestore"
 import { app } from "@/utils/firebase"
 import { getAuth } from "firebase/auth"
 
@@ -16,19 +16,24 @@ export default function YourStories(){
         if(user && user.email){
         const fetchStories = async(email : string)=> {
             const db = getFirestore(app)
-            const snapshot = await getDocs(collection(db, 'stories', email))
+            const docRef = doc(db, 'stories', email)
+            const docSnap = await getDoc(docRef)
 
-                const data: StorySubmission[] = snapshot.docs.flatMap(doc => {
-                    const docData = doc.data()
-                    console.log("Doc data:", docData)
-                    return (docData.stories ?? []) as StorySubmission[]
-                  })
+            let data: StorySubmission[] = []
+
+            if (docSnap.exists()) {
+              const docData = docSnap.data()
+              console.log("Doc data:", docData)
+              data = (docData.stories ?? []) as StorySubmission[]
+            } else {
+              console.log("No such document for", email)
+            }
                   setStories(data);
               } 
 
         fetchStories(user.email)
     }
-    })
+    }, [user])
 
     return (
         <>

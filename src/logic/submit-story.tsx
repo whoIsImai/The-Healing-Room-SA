@@ -1,4 +1,4 @@
-import { doc, setDoc, updateDoc, arrayUnion, getFirestore, arrayRemove } from 'firebase/firestore'
+import { doc, setDoc, updateDoc, arrayUnion, getFirestore, getDoc } from 'firebase/firestore'
 import {app} from '../utils/firebase'
 import { getAuth } from 'firebase/auth'
 import { FirebaseError } from 'firebase/app';
@@ -92,18 +92,28 @@ export type StorySubmission = {
   export async function deleteStory(storyId: string) {
     const db = getFirestore(app)
     const user = auth.currentUser
-    if (!user) {
-      throw new Error("User not authenticated")
-    }
-    if (!user.email) throw new Error("User email not found");
-    const userRef = doc(db, 'stories', user.email)
-    try {
-      await updateDoc(userRef, {
-        stories: arrayRemove({ id: storyId })
-      })
-    } catch (error) {
-      console.error("Error deleting story:", error)
-      throw error
-    }
+  
+    if (!user) throw new Error("User not authenticated")
+      if (!user.email) throw new Error("User email not found")
+      
+      const userRef = doc(db, 'stories', user.email)
+      
+      try {
+        const userSnap = await getDoc(userRef)
+      
+        if (userSnap.exists()) {
+          const userData = userSnap.data()
+          const updatedStories = (userData.stories ?? []).filter(
+            (story: StorySubmission) => story.id !== storyId
+          )
+      
+          await updateDoc(userRef, { stories: updatedStories })
+        } else {
+          throw new Error("User document not found")
+        }
+      } catch (error) {
+        console.error("Error deleting story:", error)
+        throw error
+      }
   }
   
