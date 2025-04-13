@@ -1,10 +1,10 @@
 import {Link, useNavigate } from "react-router-dom"
 import {app} from "../utils/firebase"
-import { getAuth } from "firebase/auth"
+import { getAuth, onAuthStateChanged, User } from "firebase/auth"
 import DefaultAvatar from '../components/ui/Profile.png'
 import { ScrollText, FileText, MoveUpRight, LogOut } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import LoadingOverlay from "@/utils/loading"
 import NavBar from '../components/ui/NavBar'
 
@@ -16,31 +16,23 @@ interface MenuItem {
     external?: boolean
     }
 
-interface Profileprops {
-    name: string | null | undefined
-    edit: string
-    picture: string
-    }
+    const auth = getAuth(app)  
 
-    const auth = getAuth(app)
-    const user = auth.currentUser || null
-    
-    const defaultProfile = {
-        name: user?.displayName,
-        edit: "Edit your profile",
-        picture: user?.photoURL || DefaultAvatar,
-        } satisfies Required<Profileprops>
-
-
-
-export default function Profile({
-    name = defaultProfile.name,
-    edit = defaultProfile.edit,
-    picture = defaultProfile.picture,
-}: Partial<Profileprops> = defaultProfile){
+export default function Profile(){
 
     const [loading, setLoading] = useState(false)
+    const [user, setUser] = useState<User | null>(null)
     const navigate = useNavigate()
+
+
+    // Set up persistent auth state listener
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
+
+    return () => unsubscribe()
+  }, [])
 
     const menuItems: MenuItem[] = [
         {
@@ -69,6 +61,10 @@ export default function Profile({
                setLoading(false)
            }
        }
+
+       const picture = user?.photoURL || DefaultAvatar
+       const edit = "Edit your profile"
+       const name = user?.displayName
 
 if(user){
   return (
