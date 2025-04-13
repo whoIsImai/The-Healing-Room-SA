@@ -113,8 +113,8 @@ if(user){
              </Link>
            ))}
 
-           <button
-             type="button"
+           <div
+             
              className="w-full flex items-center justify-between p-2 
                                hover:bg-zinc-50 dark:hover:bg-zinc-800/50 
                                rounded-lg transition-colors duration-200"
@@ -125,7 +125,7 @@ if(user){
                onClick={logout}
                >Logout</Button>
              </div>
-           </button>
+           </div>
          </div>
        </div>
      </div>
