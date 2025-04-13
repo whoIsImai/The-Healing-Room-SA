@@ -37,10 +37,10 @@ export default function YourStories(){
           <div className="space-y-8 flex flex-col items-center justify-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Stories of Survival & Resilience
+                Your Stories
               </h1>
               <p className="text-gray-500 md:text-xl">
-                Real experiences shared by survivors to inspire hope and raise awareness.
+               Stories submitted by you.
               </p>
             </div>
     
