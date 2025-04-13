@@ -11,21 +11,20 @@ export default function Stories() {
 
   useEffect(() => {
     const fetchStories = async () => {
-      const db = getFirestore(app);
-      const snapshot = await getDocs(collection(db, 'stories'));
+      const db = getFirestore(app)
+      const snapshot = await getDocs(collection(db, 'stories'))
   
-      console.log("Fetched stories:", snapshot.size);
+      console.log("Fetched stories:", snapshot.size)
   
       const data: StorySubmission[] = snapshot.docs.flatMap(doc => {
-        const docData = doc.data().stories;
-        console.log("Doc data:", docData);
-        return (docData ?? []) as StorySubmission[];
-      });
+        const docData = doc.data().stories
+        return (docData ?? []) as StorySubmission[]
+      })
   
-      setStories(data);
-    };
+      setStories(data)
+    }
 
-    fetchStories();
+    fetchStories()
   }, [])
 
   return (
