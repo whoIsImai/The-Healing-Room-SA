@@ -17,9 +17,9 @@ export default function Stories() {
       console.log("Fetched stories:", snapshot.size);
   
       const data: StorySubmission[] = snapshot.docs.flatMap(doc => {
-        const docData = doc.data();
+        const docData = doc.data().stories;
         console.log("Doc data:", docData);
-        return (docData.stories ?? []) as StorySubmission[];
+        return (docData ?? []) as StorySubmission[];
       });
   
       setStories(data);

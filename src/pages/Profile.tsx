@@ -1,7 +1,7 @@
 import {Link, useNavigate } from "react-router-dom"
 import {app} from "../utils/firebase"
 import { getAuth } from "firebase/auth"
-import DefaultAvatar from '../../public/Profile.png'
+import DefaultAvatar from '../components/ui/Profile.png'
 import { ScrollText, FileText, MoveUpRight, LogOut } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { useState } from "react"

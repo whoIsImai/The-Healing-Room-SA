@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { useState} from "react"
 import {FcGoogle} from 'react-icons/fc'
 import {app} from "../../utils/firebase"
-import { getAuth } from "firebase/auth"
+import { getAuth, User } from "firebase/auth"
 import LoadingOverlay from "@/utils/loading"
 
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
@@ -12,7 +12,7 @@ const provider = new GoogleAuthProvider()
 
 export default function NavBar() {
     const auth = getAuth(app)
-    const user = auth.currentUser
+   const [user, setUser] = useState<User | null>(null)
 
     const [loading, setLoading] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
@@ -22,9 +22,7 @@ export default function NavBar() {
           setLoading(true)
             await signInWithPopup(auth, provider)
             const user = auth.currentUser
-            if (user) {
-              console.log("User signed in:")
-            }
+            setUser(user)
         } catch (error) {
           console.error(error)
         } finally {
@@ -169,7 +167,7 @@ onClick={() => setMenuOpen(!menuOpen)}
               <Link to="/Stories" className="transition-colors hover:text-foreground/80">
               Stories
               </Link>
-              <Link to="/Profile" className="transition-colors hover:text-foreground/80">
+             <Link to="/Profile" className="transition-colors hover:text-foreground/80">
               Profile
               </Link>
 </div>
